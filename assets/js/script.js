@@ -1,3 +1,7 @@
+
+const cardContainer = document.getElementById('container')
+
+
 const posts = [
     {
         "id": 1,
@@ -55,3 +59,30 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+
+posts.forEach((post) => {
+
+    const markupCard = `
+    <div class="card">
+        <div class="headerCard">
+            <img class="imgCircle" src="${post.author.image}" alt="">
+            <div class="col">
+                <h4 class="nome">${post.author.name}</h4>
+                <p>${post.created}</p>
+            </div>
+        </div>
+        <p class="description">${post.content}</p>
+        <img class="imgNormal" src="${post.media}" alt="">
+        <div class="d-flex">
+            <button id="${post.id}" class="btn">Mi piace</button>
+            <div>
+                Piace a <span>${post.likes}</span> persone
+            </div>
+        </div>
+    </div>`
+
+    cardContainer.insertAdjacentHTML('beforeend', markupCard);
+})
+
+
