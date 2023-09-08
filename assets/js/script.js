@@ -42,7 +42,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=23"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -77,12 +77,19 @@ posts.forEach((post) => {
         <div class="d-flex">
             <button id="${post.id}" class="btn">Mi piace</button>
             <div>
-                Piace a <span>${post.likes}</span> persone
+                Piace a <span id="likes${post.id}">${post.likes}</span> persone
             </div>
         </div>
     </div>`
 
     cardContainer.insertAdjacentHTML('beforeend', markupCard);
+    
+
+    let button =  document.getElementById(post.id);
+
+    button.addEventListener('click', function(){
+        let likes = document.getElementById('likes'+ button.id);
+        likes.innerHTML++;
+        button.classList.toggle('red');
+    });
 })
-
-
